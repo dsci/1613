@@ -9,4 +9,11 @@ namespace :compile do
       system(cmd)
     end
   end
+  
+  desc 'removes all builds'
+  task :clean do
+    Dir[File.expand_path(File.join(File.dirname(__FILE__),'build', '**'))].each do |pascal_source|
+      FileUtils.rm_rf(pascal_source)
+    end
+  end
 end
